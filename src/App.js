@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import getCookie from 'js-cookie';
 
 class App extends Component {
   render() {
