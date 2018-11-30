@@ -1,26 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import SelectionContainer from './SelectionContainer';
+import GraphContainer from './GraphContainer';
 import getCookie from 'js-cookie';
 
 class App extends Component {
+  // without logging in, user will see sunburst, selection table, and graph and will be able to make selections that populate the graph
+  // once logged in, user will also see input to add consumer references
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div className="siteLogo">
+          <h1>CostCompare</h1>
+          <div className="mainContent">
+            <div className="sunburstContainer">
+              <h3>Sunburst will go here</h3>
+              <h4>(last thing to add)</h4>
+            </div>
+            <div className="variableContainer">
+              <div className="selectionContainer">
+                <SelectionContainer />
+              </div>
+              <div className="graphContainer">
+                <GraphContainer />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
