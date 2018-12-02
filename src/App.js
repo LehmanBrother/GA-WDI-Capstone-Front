@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import SunburstContainer from './SunburstContainer';
 import SelectionContainer from './SelectionContainer';
 import GraphContainer from './GraphContainer';
 import getCookie from 'js-cookie';
@@ -14,8 +15,7 @@ class App extends Component {
           <h1>CostCompare</h1>
           <div className="mainContent">
             <div className="sunburstContainer">
-              <h3>Sunburst will go here</h3>
-              <h4>(last thing to add)</h4>
+              <SunburstContainer />
             </div>
             <div className="variableContainer">
               <div className="selectionContainer">

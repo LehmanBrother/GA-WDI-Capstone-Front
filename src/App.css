@@ -32,6 +32,14 @@
   justify-content: space-between;
 }
 
+.variableContainer {
+  width: 40%;
+}
+
+.column {
+  text-align: center;
+}
+
 h1 {
   font-family: Consolas,monaco,monospace;
 }
