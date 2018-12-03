@@ -32,11 +32,12 @@ class AccSelectContainer extends Component {
 	render(){
 		const accountOptions = this.state.allAccounts.map(el => ({
 			key: el.account_id,
-			value: el.name,
+			value: el.amount,
 			text: el.name
 		}))
 		return(
-			<Dropdown placeholder='Select Account' fluid search selection options={accountOptions} />
+			// potentially change this one to plain search to reduce lag
+			<Dropdown placeholder='Select Account' fluid search selection options={accountOptions} onChange={this.props.updateSelection} />
 		)
 	}
 }

@@ -33,11 +33,11 @@ class AgSelectContainer extends Component {
 	render(){
 		const agencyOptions = this.state.allAgencies.map(el => ({
 			key: el.agency_id,
-			value: el.name,
+			value: el.amount,
 			text: el.name
 		}))
 		return(
-			<Dropdown placeholder='Select Agency' fluid search selection options={agencyOptions} />
+			<Dropdown placeholder='Select Agency' fluid search selection options={agencyOptions} onChange={this.props.updateSelection}/>
 		)
 	}
 }

@@ -10,7 +10,10 @@ class SelectionContainer extends Component {
 		this.state = {
 			typeSelector1: 'Account',
 			typeSelector2: 'Agency',
-			typeSelector3: 'Consumer Reference'
+			typeSelector3: 'Consumer Reference',
+			selection1: {},
+			selection2: {},
+			selection3: {}
 		}
 	}
 	updateTypeSelector = (e, e2) => {
@@ -18,11 +21,18 @@ class SelectionContainer extends Component {
 			[e2.name]: e2.value
 		});
 	}
+	updateSelection = (e, e2, e3) => {
+		let amount = e3.value;
+		let name = e3.options.filter(el => el.value === e3.value)[0].text;
+		this.setState({
+			[e]: {
+				name: name,
+				amount: amount
+			}
+		})
+	}
 	render(){
-		// 4x3 table
-			// top row is drop-downs to allow user to select agency, account, or consumer reference
-			// second row has search selection of chosen category
-			// third row contains drop-downs to select multiplier
+		console.log(this.state);
 		const costTypes = [
 			{
 				text: 'Account',
@@ -39,25 +49,25 @@ class SelectionContainer extends Component {
 		]
 		let typeSelectorModal1;
 		if(this.state.typeSelector1 === 'Account'){
-			typeSelectorModal1 = <AccSelectContainer />
+			typeSelectorModal1 = <AccSelectContainer updateSelection={this.updateSelection.bind(null, "selection1")} />
 		} else if(this.state.typeSelector1 === 'Agency'){
-			typeSelectorModal1 = <AgSelectContainer />
+			typeSelectorModal1 = <AgSelectContainer updateSelection={this.updateSelection.bind(null, "selection1")} />
 		} else if(this.state.typeSelector1 === 'Consumer Reference'){
 			typeSelectorModal1 = <CRefSelectContainer />
 		}
 		let typeSelectorModal2;
 		if(this.state.typeSelector2 === 'Account'){
-			typeSelectorModal2 = <AccSelectContainer />
+			typeSelectorModal2 = <AccSelectContainer updateSelection={this.updateSelection.bind(null, "selection2")} />
 		} else if(this.state.typeSelector2 === 'Agency'){
-			typeSelectorModal2 = <AgSelectContainer />
+			typeSelectorModal2 = <AgSelectContainer updateSelection={this.updateSelection.bind(null, "selection2")} />
 		} else if(this.state.typeSelector2 === 'Consumer Reference'){
 			typeSelectorModal2 = <CRefSelectContainer />
 		}
 		let typeSelectorModal3;
 		if(this.state.typeSelector3 === 'Account'){
-			typeSelectorModal3 = <AccSelectContainer />
+			typeSelectorModal3 = <AccSelectContainer updateSelection={this.updateSelection.bind(null, "selection3")} />
 		} else if(this.state.typeSelector3 === 'Agency'){
-			typeSelectorModal3 = <AgSelectContainer />
+			typeSelectorModal3 = <AgSelectContainer updateSelection={this.updateSelection.bind(null, "selection3")} />
 		} else if(this.state.typeSelector3 === 'Consumer Reference'){
 			typeSelectorModal3 = <CRefSelectContainer />
 		}

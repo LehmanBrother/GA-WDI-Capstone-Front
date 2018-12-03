@@ -6,6 +6,12 @@ import GraphContainer from './GraphContainer';
 import getCookie from 'js-cookie';
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      // will contain amount #s from SelectionContainer to pass as props to GraphContainer
+    }
+  }
   // without logging in, user will see sunburst, selection table, and graph and will be able to make selections that populate the graph
   // once logged in, user will also see input to add consumer references
   render() {
