@@ -11,9 +11,18 @@ class SelectionContainer extends Component {
 			typeSelector1: 'Account',
 			typeSelector2: 'Agency',
 			typeSelector3: 'Consumer Reference',
-			selection1: {},
-			selection2: {},
-			selection3: {}
+			selection1: {
+				amount: 0,
+				name: 'Column 1'
+			},
+			selection2: {
+				amount: 0,
+				name: 'Column 2'
+			},
+			selection3: {
+				amount: 0,
+				name: 'Column 3'
+			}
 		}
 	}
 	updateTypeSelector = (e, e2) => {
@@ -21,15 +30,20 @@ class SelectionContainer extends Component {
 			[e2.name]: e2.value
 		});
 	}
-	updateSelection = (e, e2, e3) => {
+	updateSelection = async (e, e2, e3) => {
+		console.log("the es:");
+		console.log(e, );
+		console.log(e2);
+		console.log(e3);
 		let amount = e3.value;
 		let name = e3.options.filter(el => el.value === e3.value)[0].text;
-		this.setState({
+		await this.setState({
 			[e]: {
 				name: name,
 				amount: amount
 			}
 		})
+		this.props.updateGraph(this.state.selection1, this.state.selection2, this.state.selection3);
 	}
 	render(){
 		console.log(this.state);

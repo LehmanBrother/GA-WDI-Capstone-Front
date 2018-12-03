@@ -10,11 +10,32 @@ class App extends Component {
     super();
     this.state = {
       // will contain amount #s from SelectionContainer to pass as props to GraphContainer
+      selection1: {
+        amount: 0,
+        name: 'Column 1'
+      },
+      selection2: {
+        amount: 0,
+        name: 'Column 2'
+      },
+      selection3: {
+        amount: 0,
+        name: 'Column 3'
+      }
     }
+  }
+  updateGraph = (a,b,c) => {
+    console.log('updateGraph called');
+    this.setState({
+      selection1: a,
+      selection2: b,
+      selection3: c
+    })
   }
   // without logging in, user will see sunburst, selection table, and graph and will be able to make selections that populate the graph
   // once logged in, user will also see input to add consumer references
   render() {
+    console.log(this.state, 'app state');
     return (
       <div className="App">
         <div className="siteLogo">
@@ -25,10 +46,10 @@ class App extends Component {
             </div>
             <div className="variableContainer">
               <div className="selectionContainer">
-                <SelectionContainer />
+                <SelectionContainer updateGraph={this.updateGraph} />
               </div>
               <div className="graphContainer">
-                <GraphContainer />
+                <GraphContainer selection1={this.state.selection1} selection2={this.state.selection2} selection3={this.state.selection3} />
               </div>
             </div>
           </div>

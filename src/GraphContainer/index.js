@@ -18,6 +18,7 @@ class GraphContainer extends Component {
 		}
 	}
 	render(){
+		console.log(this.props.selection2, 'gc selection2');
 		//may eventually need to change column totals to come from this.props
 		return(
 			<div>
@@ -54,14 +55,14 @@ class GraphContainer extends Component {
 								standalone={false}
 								style={{
 									data: {width: 20},
-									labels: {fontSize: 25}
+									labels: {fontSize: 12}
 								}}
 								data={[
-									{x: "a", y: "2"},
-									{x: "b", y: "3"},
-									{x: "c", y: "5"}
+									{x: "a", y: Math.round(this.props.selection1.amount)},
+									{x: "b", y: Math.round(this.props.selection2.amount)},
+									{x: "c", y: Math.round(this.props.selection3.amount)}
 								]}
-								labels={["a","b","c","d"]}
+								labels={[this.props.selection1.name,this.props.selection2.name,this.props.selection3.name]}
 								labelComponent={<VictoryLabel y={280}/>}
 							/>
 						</g>
@@ -69,11 +70,11 @@ class GraphContainer extends Component {
 							<VictoryPie name="pie"
 								width={250}
 								standalone={false}
-								style={{labels: {fontSize: 25, padding: 10}}}
+								style={{labels: {fontSize: 12, padding: 10}}}
 								data={[
-									{x: "a", y: "1"},
-									{x: "b", y: "4"},
-									{x: "c", y: "5"}
+									{x: "a", y: Math.round(this.props.selection1.amount)},
+									{x: "b", y: Math.round(this.props.selection2.amount)},
+									{x: "c", y: Math.round(this.props.selection3.amount)}
 								]}
 							/>
 						</g>
