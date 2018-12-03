@@ -40,6 +40,10 @@
   text-align: center;
 }
 
+.ui .input {
+  width: 60%;
+}
+
 h1 {
   font-family: Consolas,monaco,monospace;
 }

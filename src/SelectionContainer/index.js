@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Dropdown, Grid } from 'semantic-ui-react';
+import { Dropdown, Grid, Input } from 'semantic-ui-react';
 import AccSelectContainer from '../AccSelectContainer';
 import AgSelectContainer from '../AgSelectContainer';
 import CRefSelectContainer from '../CRefSelectContainer';
@@ -96,13 +96,13 @@ class SelectionContainer extends Component {
 						Multiplier
 					</Grid.Column>
 					<Grid.Column>
-						Multiplier 1
+						<Input type='number' />
 					</Grid.Column>
 					<Grid.Column>
-						Multiplier 2
+						<Input type='number' />
 					</Grid.Column>
 					<Grid.Column>
-						Multiplier 3
+						<Input type='number' />
 					</Grid.Column>
 				</Grid.Row>
 			</Grid>
