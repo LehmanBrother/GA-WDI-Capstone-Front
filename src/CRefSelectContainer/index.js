@@ -1,33 +1,41 @@
 import React, {Component} from 'react';
 import { Dropdown } from 'semantic-ui-react';
+import getCookie from 'js-cookie';
 
 class CRefSelectContainer extends Component {
 	constructor(){
 		super();
 		this.state = {
-
+			allCrefs: []
 		}
 	}
-	render(){
-		const crefOptions = [
-			{
-				key: 'ph1',
-				value: 'ph1',
-				text: 'Placeholder 1'
-			},
-			{
-				key: 'ph2',
-				value: 'ph2',
-				text: 'Placeholder 2'
-			},
-			{
-				key: 'ph3',
-				value: 'ph3',
-				text: 'Placeholder 3'
+	getCRefs = async () => {
+		const csrfCookie = getCookie('csrftoken');
+		const crefs = await fetch('http://localhost:8000/costs/crefs/', {
+			credentials: 'include',
+			headers: {
+				'X-CSRFToken': csrfCookie
 			}
-		]
+		});
+		const crefsParsedJSON = await crefs.json();
+		return crefsParsedJSON
+	}
+	componentDidMount(){
+		this.getCRefs().then((crefs) => {
+			this.setState({allCrefs: crefs.data})
+			console.log(this.state, 'cref state');
+		}).catch((err) => {
+			console.log(err);
+		})
+	}
+	render(){
+		const crefOptions = this.state.allCrefs.map(el => ({
+			key: el.id,
+			value: el.price,
+			text: el.name
+		}))
 		return(
-			<Dropdown placeholder='Select Consumer Reference' fluid search selection options={crefOptions} />
+			<Dropdown placeholder='Select Consumer Reference' fluid search selection options={crefOptions} onChange={this.props.updateSelection} />
 		)
 	}
 }

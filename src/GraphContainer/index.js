@@ -62,7 +62,7 @@ class GraphContainer extends Component {
 									{x: "b", y: Math.round(this.props.selection2.amount)},
 									{x: "c", y: Math.round(this.props.selection3.amount)}
 								]}
-								labels={[this.props.selection1.name,this.props.selection2.name,this.props.selection3.name]}
+								labels={["a","b","c"]}
 								labelComponent={<VictoryLabel y={280}/>}
 							/>
 						</g>

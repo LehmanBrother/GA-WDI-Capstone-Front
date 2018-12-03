@@ -31,10 +31,8 @@ class SelectionContainer extends Component {
 		});
 	}
 	updateSelection = async (e, e2, e3) => {
-		console.log("the es:");
-		console.log(e, );
-		console.log(e2);
-		console.log(e3);
+		console.log(e, 'e');
+		console.log(e3, 'e3');
 		let amount = e3.value;
 		let name = e3.options.filter(el => el.value === e3.value)[0].text;
 		await this.setState({
@@ -67,7 +65,7 @@ class SelectionContainer extends Component {
 		} else if(this.state.typeSelector1 === 'Agency'){
 			typeSelectorModal1 = <AgSelectContainer updateSelection={this.updateSelection.bind(null, "selection1")} />
 		} else if(this.state.typeSelector1 === 'Consumer Reference'){
-			typeSelectorModal1 = <CRefSelectContainer />
+			typeSelectorModal1 = <CRefSelectContainer updateSelection={this.updateSelection.bind(null, "selection1")} />
 		}
 		let typeSelectorModal2;
 		if(this.state.typeSelector2 === 'Account'){
@@ -75,7 +73,7 @@ class SelectionContainer extends Component {
 		} else if(this.state.typeSelector2 === 'Agency'){
 			typeSelectorModal2 = <AgSelectContainer updateSelection={this.updateSelection.bind(null, "selection2")} />
 		} else if(this.state.typeSelector2 === 'Consumer Reference'){
-			typeSelectorModal2 = <CRefSelectContainer />
+			typeSelectorModal2 = <CRefSelectContainer updateSelection={this.updateSelection.bind(null, "selection2")} />
 		}
 		let typeSelectorModal3;
 		if(this.state.typeSelector3 === 'Account'){
@@ -83,7 +81,7 @@ class SelectionContainer extends Component {
 		} else if(this.state.typeSelector3 === 'Agency'){
 			typeSelectorModal3 = <AgSelectContainer updateSelection={this.updateSelection.bind(null, "selection3")} />
 		} else if(this.state.typeSelector3 === 'Consumer Reference'){
-			typeSelectorModal3 = <CRefSelectContainer />
+			typeSelectorModal3 = <CRefSelectContainer updateSelection={this.updateSelection.bind(null, "selection3")} />
 		}
 		return(
 			<Grid columns={4} divided>
