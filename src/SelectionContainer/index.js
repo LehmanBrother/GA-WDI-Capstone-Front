@@ -22,7 +22,10 @@ class SelectionContainer extends Component {
 			selection3: {
 				amount: 0,
 				name: 'Column 3'
-			}
+			},
+			mult1: 1,
+			mult2: 1,
+			mult3: 1
 		}
 	}
 	updateTypeSelector = (e, e2) => {
@@ -42,6 +45,14 @@ class SelectionContainer extends Component {
 			}
 		})
 		this.props.updateGraph(this.state.selection1, this.state.selection2, this.state.selection3);
+	}
+	updateMultiplier = async (e, e2) => {
+		console.log(e, 'e');
+		console.log(e2, 'e2');
+		await this.setState({
+			[e2.name]: e2.value
+		})
+		this.props.updateMult(this.state.mult1, this.state.mult2, this.state.mult3);
 	}
 	render(){
 		console.log(this.state, 'sel state');
@@ -118,13 +129,13 @@ class SelectionContainer extends Component {
 						Multiplier
 					</Grid.Column>
 					<Grid.Column>
-						<Input type='number' />
+						<Input type='number' name='mult1' onChange={this.updateMultiplier} />
 					</Grid.Column>
 					<Grid.Column>
-						<Input type='number' />
+						<Input type='number' name='mult2' onChange={this.updateMultiplier} />
 					</Grid.Column>
 					<Grid.Column>
-						<Input type='number' />
+						<Input type='number' name='mult3' onChange={this.updateMultiplier} />
 					</Grid.Column>
 				</Grid.Row>
 			</Grid>

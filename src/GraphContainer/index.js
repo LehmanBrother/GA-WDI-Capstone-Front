@@ -8,19 +8,16 @@ class GraphContainer extends Component {
 		this.state = {
 			column1Total: 0,
 			column2Total: 0,
-			column3Total: 0,
-			testData: [
-				{quarter: 1, earnings: 13000},
-				{quarter: 2, earnings: 16500},
-				{quarter: 3, earnings: 14250},
-				{quarter: 4, earnings: 19000}
-			]
+			column3Total: 0
 		}
 	}
 	render(){
 		console.log(this.props.selection1, 'gc selection1');
 		console.log(this.props.selection2, 'gc selection2');
 		console.log(this.props.selection3, 'gc selection3');
+		let mult1 = parseInt(this.props.mult1);
+		let mult2 = parseInt(this.props.mult2);
+		let mult3 = parseInt(this.props.mult3);
 		//may eventually need to change column totals to come from this.props
 		return(
 			<div>
@@ -60,11 +57,11 @@ class GraphContainer extends Component {
 									labels: {fontSize: 12}
 								}}
 								data={[
-									{x: "a", y: Math.round(this.props.selection1.amount)},
-									{x: "b", y: Math.round(this.props.selection2.amount)},
-									{x: "c", y: Math.round(this.props.selection3.amount)}
+									{x: "a", y: Math.round(this.props.selection1.amount*mult1)},
+									{x: "b", y: Math.round(this.props.selection2.amount*mult2)},
+									{x: "c", y: Math.round(this.props.selection3.amount*mult3)}
 								]}
-								labels={["a","b","c"]}
+								labels={(d) => d.y}
 								labelComponent={<VictoryLabel y={280}/>}
 							/>
 						</g>
@@ -74,9 +71,9 @@ class GraphContainer extends Component {
 								standalone={false}
 								style={{labels: {fontSize: 12, padding: 10}}}
 								data={[
-									{x: "a", y: Math.round(this.props.selection1.amount)},
-									{x: "b", y: Math.round(this.props.selection2.amount)},
-									{x: "c", y: Math.round(this.props.selection3.amount)}
+									{x: "a", y: Math.round(this.props.selection1.amount*mult1)},
+									{x: "b", y: Math.round(this.props.selection2.amount*mult2)},
+									{x: "c", y: Math.round(this.props.selection3.amount*mult3)}
 								]}
 							/>
 						</g>

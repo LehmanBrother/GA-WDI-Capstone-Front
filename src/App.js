@@ -23,6 +23,9 @@ class App extends Component {
         amount: 0,
         name: 'Column 3'
       },
+      mult1: 1,
+      mult2: 1,
+      mult3: 1,
       crefs: []
     }
   }
@@ -32,6 +35,14 @@ class App extends Component {
       selection1: a,
       selection2: b,
       selection3: c
+    })
+  }
+  updateMult = (a,b,c) => {
+    console.log('updateMult called');
+    this.setState({
+      mult1: a,
+      mult2: b,
+      mult3: c
     })
   }
   getCRefs = async () => {
@@ -87,10 +98,10 @@ class App extends Component {
             </div>
             <div className="variableContainer">
               <div className="selectionContainer">
-                <SelectionContainer updateGraph={this.updateGraph} getCRefs={this.getCRefs} crefs={this.state.crefs}/>
+                <SelectionContainer updateGraph={this.updateGraph} updateMult={this.updateMult} getCRefs={this.getCRefs} crefs={this.state.crefs}/>
               </div>
               <div className="graphContainer">
-                <GraphContainer selection1={this.state.selection1} selection2={this.state.selection2} selection3={this.state.selection3} />
+                <GraphContainer selection1={this.state.selection1} selection2={this.state.selection2} selection3={this.state.selection3} mult1={this.state.mult1} mult2={this.state.mult3} mult3={this.state.mult3} />
               </div>
             </div>
           </div>
