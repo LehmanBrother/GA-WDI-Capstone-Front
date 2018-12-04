@@ -3,18 +3,7 @@ import './App.css';
 import SunburstContainer from './SunburstContainer';
 import SelectionContainer from './SelectionContainer';
 import GraphContainer from './GraphContainer';
-import Login from './Login';
-import Registration from './Registration';
 import getCookie from 'js-cookie';
-import { Route, Switch } from 'react-router-dom';
-
-const My404 = () => {
-  return (
-      <div>
-        what did you do
-      </div>
-    )
-}
 
 class App extends Component {
   constructor(){
@@ -42,39 +31,6 @@ class App extends Component {
       selection2: b,
       selection3: c
     })
-  }
-  getToken = async () => {
-    const token = await fetch('http://localhost:8000/users/getToken/', {
-      method: 'get',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    const tokenResponse = token.json();
-    return tokenResponse;
-  }
-  logout = async (e) => {
-    e.preventDefault();
-    const csrfCookie = getCookie('csrftoken');
-    const loginResponse = await fetch('http://localhost:8000/users/logout/', {
-      method: 'get',
-      credentials: 'include',
-      headers: {
-        'X-CSRFToken': csrfCookie,
-        'Content-Type': 'application/json'
-      }
-    });
-    const parsedResponse = await loginResponse.json();
-    if(parsedResponse.data === 'logout successful'){
-      console.log('successful logout');
-      console.log(this.props.history.push('/'), 'props');
-    } else {
-      console.log(parsedResponse.error);
-    }
-  }
-  componentDidMount(){
-    this.getToken();
   }
   render() {
     console.log(this.state, 'app state');
