@@ -18,7 +18,9 @@ class GraphContainer extends Component {
 		}
 	}
 	render(){
+		console.log(this.props.selection1, 'gc selection1');
 		console.log(this.props.selection2, 'gc selection2');
+		console.log(this.props.selection3, 'gc selection3');
 		//may eventually need to change column totals to come from this.props
 		return(
 			<div>

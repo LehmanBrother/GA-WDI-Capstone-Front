@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import SunburstContainer from './SunburstContainer';
+import CreateCRef from './CreateCRef';
 import SelectionContainer from './SelectionContainer';
 import GraphContainer from './GraphContainer';
 import getCookie from 'js-cookie';
@@ -21,7 +22,8 @@ class App extends Component {
       selection3: {
         amount: 0,
         name: 'Column 3'
-      }
+      },
+      crefs: []
     }
   }
   updateGraph = (a,b,c) => {
@@ -30,6 +32,44 @@ class App extends Component {
       selection1: a,
       selection2: b,
       selection3: c
+    })
+  }
+  getCRefs = async () => {
+    const csrfCookie = getCookie('csrftoken');
+    const crefs = await fetch('http://localhost:8000/costs/crefs/', {
+      credentials: 'include',
+      headers: {
+        'X-CSRFToken': csrfCookie
+      }
+    });
+    const crefsParsedJSON = await crefs.json();
+    return crefsParsedJSON
+  }
+  addCRef = async (cref, e) => {
+    console.log('addcref called');
+    e.preventDefault();
+    try {
+      const csrfCookie = getCookie('csrftoken');
+      const createdCref = await fetch('http://localhost:8000/costs/crefs/', {
+        method: 'POST',
+        credentials: 'include',
+        body: JSON.stringify(cref),
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrfCookie
+        }
+      });
+      const parsedResponse = await createdCref.json();
+      this.setState({crefs: [...this.state.crefs, parsedResponse.data]})
+    } catch(err){
+      console.log(err);
+    }
+  }
+  componentDidMount(){
+    this.getCRefs().then((crefs) => {
+      this.setState({crefs: crefs.data})
+    }).catch((err) => {
+      console.log(err);
     })
   }
   render() {
@@ -42,9 +82,12 @@ class App extends Component {
             <div className="sunburstContainer">
               <SunburstContainer />
             </div>
+            <div className="crudContainer">
+              <CreateCRef addCRef={this.addCRef} />
+            </div>
             <div className="variableContainer">
               <div className="selectionContainer">
-                <SelectionContainer updateGraph={this.updateGraph} />
+                <SelectionContainer updateGraph={this.updateGraph} getCRefs={this.getCRefs} crefs={this.state.crefs}/>
               </div>
               <div className="graphContainer">
                 <GraphContainer selection1={this.state.selection1} selection2={this.state.selection2} selection3={this.state.selection3} />

@@ -44,7 +44,7 @@ class SelectionContainer extends Component {
 		this.props.updateGraph(this.state.selection1, this.state.selection2, this.state.selection3);
 	}
 	render(){
-		console.log(this.state);
+		console.log(this.state, 'sel state');
 		const costTypes = [
 			{
 				text: 'Account',
@@ -65,7 +65,7 @@ class SelectionContainer extends Component {
 		} else if(this.state.typeSelector1 === 'Agency'){
 			typeSelectorModal1 = <AgSelectContainer updateSelection={this.updateSelection.bind(null, "selection1")} />
 		} else if(this.state.typeSelector1 === 'Consumer Reference'){
-			typeSelectorModal1 = <CRefSelectContainer updateSelection={this.updateSelection.bind(null, "selection1")} />
+			typeSelectorModal1 = <CRefSelectContainer updateSelection={this.updateSelection.bind(null, "selection1")} crefs={this.props.crefs} />
 		}
 		let typeSelectorModal2;
 		if(this.state.typeSelector2 === 'Account'){
@@ -73,7 +73,7 @@ class SelectionContainer extends Component {
 		} else if(this.state.typeSelector2 === 'Agency'){
 			typeSelectorModal2 = <AgSelectContainer updateSelection={this.updateSelection.bind(null, "selection2")} />
 		} else if(this.state.typeSelector2 === 'Consumer Reference'){
-			typeSelectorModal2 = <CRefSelectContainer updateSelection={this.updateSelection.bind(null, "selection2")} />
+			typeSelectorModal2 = <CRefSelectContainer updateSelection={this.updateSelection.bind(null, "selection2")} crefs={this.props.crefs} />
 		}
 		let typeSelectorModal3;
 		if(this.state.typeSelector3 === 'Account'){
@@ -81,7 +81,7 @@ class SelectionContainer extends Component {
 		} else if(this.state.typeSelector3 === 'Agency'){
 			typeSelectorModal3 = <AgSelectContainer updateSelection={this.updateSelection.bind(null, "selection3")} />
 		} else if(this.state.typeSelector3 === 'Consumer Reference'){
-			typeSelectorModal3 = <CRefSelectContainer updateSelection={this.updateSelection.bind(null, "selection3")} />
+			typeSelectorModal3 = <CRefSelectContainer updateSelection={this.updateSelection.bind(null, "selection3")} crefs={this.props.crefs} />
 		}
 		return(
 			<Grid columns={4} divided>

@@ -20,16 +20,8 @@ class CRefSelectContainer extends Component {
 		const crefsParsedJSON = await crefs.json();
 		return crefsParsedJSON
 	}
-	componentDidMount(){
-		this.getCRefs().then((crefs) => {
-			this.setState({allCrefs: crefs.data})
-			console.log(this.state, 'cref state');
-		}).catch((err) => {
-			console.log(err);
-		})
-	}
 	render(){
-		const crefOptions = this.state.allCrefs.map(el => ({
+		const crefOptions = this.props.crefs.map(el => ({
 			key: el.id,
 			value: el.price,
 			text: el.name
