@@ -72,7 +72,7 @@ class App extends Component {
       });
       const parsedResponse = await createdCref.json();
       console.log(parsedResponse, 'pr');
-      // this.setState({crefs: [...this.state.crefs, parsedResponse.data]})
+      this.setState({crefs: [...this.state.crefs, parsedResponse.data]})
     } catch(err){
       console.log(err);
     }

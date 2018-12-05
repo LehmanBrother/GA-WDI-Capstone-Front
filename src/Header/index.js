@@ -10,6 +10,7 @@ const HeaderApp = (props) => {
 				<h1>CostCompare</h1>
 			</div>
 			<Link to='/costs'>Main Page</Link>
+			<Link to='/register'>Register</Link>
 			<Link to='/'>Login</Link>
 			<Link to='/' onClick={props.logOut}>Logout</Link>
 		</Header>

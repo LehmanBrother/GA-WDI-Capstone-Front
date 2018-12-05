@@ -44,7 +44,7 @@ class Registration extends Component {
 					<Form.Input type='text' name='username' onChange={this.handleChange} />
 					<Label>Password</Label>
 					<Form.Input type='password' name='password' onChange={this.handleChange} />
-					<Button type='Submit' color='blue'>Login</Button>
+					<Button type='Submit' color='blue'>Register</Button>
 				</Form>
 			</div>
 		)
