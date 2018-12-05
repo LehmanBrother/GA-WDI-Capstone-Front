@@ -1,3 +1,28 @@
+# Capstone
+## CostCompare
+
+### Scope
+CostCompare is an app that allows the user to frame the cost of various federal spending programs to reference points (both pre-populated and user-added) that would be familiar to the average consumer. For example:
+* How does the US defense budget compare to total spending on food in the US?
+* What is the distribution of spending amongst various top-level federal agencies and their subsidiaries?
+* How much money per taxpayer is spent on the Export-Import Bank?
+
+The app would serve to help users become more familiar with the magnitude of the numbers behind important government spending questions in order to better inform their opinions on these issues.
+
+### User Stories
+User will be able to:
+* Use search bars/drop-downs to create custom graphs comparing different government programs and consumer references
+ * Government programs: Will contain both top-level federal agencies and the US Treasury budget accounts for specific programs
+ * Consumer references: Will contain a variety of common consumer products, ranging from a Big Mac to the median house. User will also be able to add their own items after logging in
+
+### Screenshot
+![alt text](./screenshot.png "Display")
+
+### External Resources
+* [USA Spending API](https://api.usaspending.gov/)
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

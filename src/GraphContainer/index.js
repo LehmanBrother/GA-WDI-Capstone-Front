@@ -61,7 +61,7 @@ class GraphContainer extends Component {
 									{x: "b", y: Math.round(this.props.selection2.amount*mult2)},
 									{x: "c", y: Math.round(this.props.selection3.amount*mult3)}
 								]}
-								labels={(d) => d.y}
+								labels={(d) => '$' + d.y.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
 								labelComponent={<VictoryLabel y={280}/>}
 							/>
 						</g>
