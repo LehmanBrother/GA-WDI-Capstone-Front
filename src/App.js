@@ -71,7 +71,8 @@ class App extends Component {
         }
       });
       const parsedResponse = await createdCref.json();
-      this.setState({crefs: [...this.state.crefs, parsedResponse.data]})
+      console.log(parsedResponse, 'pr');
+      // this.setState({crefs: [...this.state.crefs, parsedResponse.data]})
     } catch(err){
       console.log(err);
     }
@@ -87,22 +88,19 @@ class App extends Component {
     console.log(this.state, 'app state');
     return (
       <div className="App">
-        <div className="siteLogo">
-          <h1>CostCompare</h1>
-          <div className="mainContent">
-            <div className="sunburstContainer">
-              <SunburstContainer />
+        <div className="mainContent">
+          <div className="sunburstContainer">
+            <SunburstContainer />
+          </div>
+          <div className="crudContainer">
+            <CreateCRef addCRef={this.addCRef} />
+          </div>
+          <div className="variableContainer">
+            <div className="selectionContainer">
+              <SelectionContainer updateGraph={this.updateGraph} updateMult={this.updateMult} getCRefs={this.getCRefs} crefs={this.state.crefs}/>
             </div>
-            <div className="crudContainer">
-              <CreateCRef addCRef={this.addCRef} />
-            </div>
-            <div className="variableContainer">
-              <div className="selectionContainer">
-                <SelectionContainer updateGraph={this.updateGraph} updateMult={this.updateMult} getCRefs={this.getCRefs} crefs={this.state.crefs}/>
-              </div>
-              <div className="graphContainer">
-                <GraphContainer selection1={this.state.selection1} selection2={this.state.selection2} selection3={this.state.selection3} mult1={this.state.mult1} mult2={this.state.mult3} mult3={this.state.mult3} />
-              </div>
+            <div className="graphContainer">
+              <GraphContainer selection1={this.state.selection1} selection2={this.state.selection2} selection3={this.state.selection3} mult1={this.state.mult1} mult2={this.state.mult3} mult3={this.state.mult3} />
             </div>
           </div>
         </div>

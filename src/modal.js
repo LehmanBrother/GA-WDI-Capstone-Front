@@ -32,7 +32,8 @@ class Modal extends Component {
 		const tokenResponse = token.json();
 		return tokenResponse;
 	}
-	logout = async (e) => {
+	logOut = async (e) => {
+		console.log("LOG OUT IS RUNNING");
 		e.preventDefault();
 		const csrfCookie = getCookie('csrftoken');
 		const loginResponse = await fetch('http://localhost:8000/users/logout/', {
@@ -44,9 +45,10 @@ class Modal extends Component {
 			}
 		});
 		const parsedResponse = await loginResponse.json();
+		console.log(parsedResponse, " what server said when we tried to log out");
 		if(parsedResponse.data === 'logout successful'){
 			console.log('successful logout');
-			console.log(this.props.history.push('/'), 'props');
+			// console.log(this.props.history.push('/'), 'props');
 		} else {
 			console.log(parsedResponse.error);
 		}
@@ -58,7 +60,7 @@ class Modal extends Component {
 		return (
 			<BrowserRouter>
 				<div>
-					<Header />
+					<Header logOut={this.logOut} />
 					<Switch>
 						<Route exact path='/' component={Login}/>
 						<Route exact path='/register' component={Registration}/>
