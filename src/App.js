@@ -5,6 +5,7 @@ import CreateCRef from './CreateCRef';
 import SelectionContainer from './SelectionContainer';
 import GraphContainer from './GraphContainer';
 import getCookie from 'js-cookie';
+import apiUrl from './apiUrl';
 
 class App extends Component {
   constructor(){
@@ -47,7 +48,7 @@ class App extends Component {
   }
   getCRefs = async () => {
     const csrfCookie = getCookie('csrftoken');
-    const crefs = await fetch('http://localhost:8000/costs/crefs/', {
+    const crefs = await fetch(apiUrl + 'costs/crefs/', {
       credentials: 'include',
       headers: {
         'X-CSRFToken': csrfCookie
@@ -61,7 +62,7 @@ class App extends Component {
     e.preventDefault();
     try {
       const csrfCookie = getCookie('csrftoken');
-      const createdCref = await fetch('http://localhost:8000/costs/crefs/', {
+      const createdCref = await fetch(apiUrl + 'costs/crefs/', {
         method: 'POST',
         credentials: 'include',
         body: JSON.stringify(cref),
@@ -86,6 +87,7 @@ class App extends Component {
   }
   render() {
     console.log(this.state, 'app state');
+    console.log(apiUrl, 'apiurl');
     return (
       <div className="App">
         <div className="mainContent">

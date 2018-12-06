@@ -5,6 +5,7 @@ import Login from './Login';
 import Registration from './Registration';
 import getCookie from 'js-cookie';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import apiUrl from './apiUrl';
 
 const My404 = () => {
   return (
@@ -22,7 +23,7 @@ class Modal extends Component {
 		}
 	}
 	getToken = async () => {
-		const token = await fetch('http://localhost:8000/users/getToken/', {
+		const token = await fetch(apiUrl + 'users/getToken/', {
 			method: 'get',
 			credentials: 'include',
 			headers: {
@@ -36,7 +37,7 @@ class Modal extends Component {
 		console.log("LOG OUT IS RUNNING");
 		e.preventDefault();
 		const csrfCookie = getCookie('csrftoken');
-		const loginResponse = await fetch('http://localhost:8000/users/logout/', {
+		const loginResponse = await fetch(apiUrl + 'users/logout/', {
 			method: 'get',
 			credentials: 'include',
 			headers: {

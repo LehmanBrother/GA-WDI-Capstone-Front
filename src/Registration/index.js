@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Label, Button } from 'semantic-ui-react';
 import getCookie from 'js-cookie';
+import apiUrl from '../apiUrl';
 
 class Registration extends Component {
 	constructor(){
@@ -18,7 +19,7 @@ class Registration extends Component {
 	handleSubmit = async (e) => {
 		e.preventDefault();
 		const csrfCookie = getCookie('csrftoken');
-		const registrationResponse = await fetch('http://localhost:8000/users/', {
+		const registrationResponse = await fetch(apiUrl + 'users/', {
 			method: 'POST',
 			credentials: 'include',
 			body: JSON.stringify(this.state),

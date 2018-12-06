@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Dropdown } from 'semantic-ui-react';
 import getCookie from 'js-cookie';
+import apiUrl from '../apiUrl';
 
 class AccSelectContainer extends Component {
 	constructor(){
@@ -11,7 +12,7 @@ class AccSelectContainer extends Component {
 	}
 	getAccounts = async () => {
 		const csrfCookie = getCookie('csrftoken');
-		const accounts = await fetch('http://localhost:8000/costs/accounts/', {
+		const accounts = await fetch(apiUrl + 'costs/accounts/', {
 			credentials: 'include',
 			headers: {
 				'X-CSRFToken': csrfCookie
