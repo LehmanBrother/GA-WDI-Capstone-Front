@@ -20,8 +20,8 @@ class SunburstContainer extends Component {
               		<li>Federal Account: US Treasury budgetary accounts associated with specific purposes. Example: Bureau of Engraving and Printing Fund (Treasury)</li><br/>
               		<li>Consumer Reference: Any consumer good or service; added by the user</li>
               	</ul>
-              	<p>US Spending data source: <a href='https://api.usaspending.gov/' target='_blank'>https://api.usaspending.gov/</a></p>
-              	<a href='https://usaspending.gov' target='_blank'>More Information</a>
+              	<p>US Spending data source: <a href='https://api.usaspending.gov/' target='_blank' rel='noopener noreferrer'>https://api.usaspending.gov/</a></p>
+              	<a href='https://usaspending.gov' target='_blank' rel='noopener noreferrer'>More Information</a>
 			</div>
 		)
 	}

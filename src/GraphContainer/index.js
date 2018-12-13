@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import { VictorySharedEvents, VictoryBar, VictoryPie, VictoryLabel } from 'victory';
 
 class GraphContainer extends Component {
