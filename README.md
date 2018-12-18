@@ -18,6 +18,9 @@ User will be able to:
 #### Heroku Deployment Note:
 * Login and consumer reference addition temporarily disabled by Heroku settings
 
+### API
+[CostCompare API](https://github.com/LehmanBrother/GA-WDI-Capstone-Back)
+
 ### Screenshot
 ![alt text](./screenshot.png "Display")
 
