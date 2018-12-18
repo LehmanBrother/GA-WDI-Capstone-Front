@@ -15,6 +15,9 @@ User will be able to:
  * Government programs: Will contain both top-level federal agencies and the US Treasury budget accounts for specific programs
  * Consumer references: Will contain a variety of common consumer products, ranging from a Big Mac to the median house. User will also be able to add their own items after logging in
 
+#### Heroku Deployment Note:
+* Login and consumer reference addition temporarily disabled by Heroku settings
+
 ### Screenshot
 ![alt text](./screenshot.png "Display")
 
